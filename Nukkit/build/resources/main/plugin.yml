@@ -1,0 +1,5 @@
+name: KotlinNukkit
+main: jp.ogiwara.nukkit.Main
+version: "0.0.1"
+author: ogiwara
+api: ["1.0.0"]
