@@ -4,6 +4,7 @@ import com.google.api.client.http.GenericUrl
 import com.google.api.client.http.HttpRequestFactory
 import com.google.api.client.http.javanet.NetHttpTransport
 import jp.ogiwara.AnitubeAPI.ANITUBE_URL_TOP
+import jp.ogiwara.AnitubeAPI.http.getBody
 import jp.ogiwara.AnitubeAPI.model.Video
 import jp.ogiwara.AnitubeAPI.utils.trim
 import org.jsoup.Jsoup
@@ -24,7 +25,7 @@ class GetTopVideosMethod(val fragment: String) {
     }
 
     fun execute(): ArrayList<Video>{
-        val result = ArrayList<Video>()
+        /*val result = ArrayList<Video>()
         val httpTransport = NetHttpTransport()
         try {
             val requestFactory = httpTransport.createRequestFactory()
@@ -49,6 +50,21 @@ class GetTopVideosMethod(val fragment: String) {
         }finally {
             httpTransport.shutdown()
         }
+        return result*/
+        val result = ArrayList<Video>()
+        try{
+            val html = getBody(ANITUBE_URL_TOP)
+            val document = Jsoup.parse(html)
+            val element = document.getElementById(fragment)
+
+            val document1 = Jsoup.parse(element.outerHtml())
+            val elements = document1.select("#$fragment ul .mainList")
+            for(e in elements)
+                result.add(makeVideoModel(e))
+
+        }catch (io: IOException){
+            io.printStackTrace()
+        }
         return result
     }
 
@@ -59,6 +75,7 @@ class GetTopVideosMethod(val fragment: String) {
         val html = e2.outerHtml()
         val videoUrl = html.trim("a href=\"","\" title")
         //val title = html.trim("title=\"","\">")//要件等
+        println(html)
         val imgUrl = html.trim("<img src=\"","\" alt")
 
         val element2 = document.select(".mainList .videoInfo .videoViews")

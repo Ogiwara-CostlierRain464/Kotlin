@@ -14,9 +14,10 @@ import java.util.regex.Pattern
  */
 data class Video(val title: String,
                  val views: String,
-                 val imgUrl: String,
+                 val imgUrl: String,//180*100 jpeg
                  val videoUrl: String){
 
+    //失敗する可能性あり
     val highMp4Url: String
         get(){
             val key = getKeyUrl()

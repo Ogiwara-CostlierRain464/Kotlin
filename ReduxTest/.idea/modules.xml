@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ReduxTest.iml" filepath="$PROJECT_DIR$/.idea/modules/ReduxTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ReduxTest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ReduxTest_main.iml" group="ReduxTest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ReduxTest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ReduxTest_test.iml" group="ReduxTest" />
+    </modules>
+  </component>
+</project>
