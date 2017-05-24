@@ -9,13 +9,11 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
-apply plugin: 'com.neenbedankt.android-apt'
 
 sourceCompatibility = 1.5
 
@@ -27,6 +25,4 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'io.reactivex:rxjava:1.1.0'
-    compile 'info.izumin.android:droidux:0.6.0'
-    apt 'info.izumin.android:droidux-processor:0.6.0'
 }

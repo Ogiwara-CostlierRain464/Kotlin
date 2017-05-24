@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "jp.ogiwara.test.kotlin.todo"
+        applicationId "jp.ogiwara.kotlin.todo2"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
@@ -27,21 +27,23 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support:recyclerview-v7:25.2.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
+    //ImmutableList
+    compile 'com.github.andrewoma.dexx:kollection:0.7'
 
+    //bansa
     compile 'com.github.brianegan.bansa:bansa:1.0.0-beta'
     compile 'com.github.brianegan.bansa:bansaKotlin:1.0.0-beta'
 
+    //Anvil
     compile 'co.trikita:anvil-sdk15:0.4.0'
     compile 'co.trikita:anvil-appcompat-v7:0.4.0'
     compile 'co.trikita:anvil-support-v4:0.4.0'
     compile 'co.trikita:anvil-design:0.4.0'
     compile 'co.trikita:anvil-recyclerview-v7:0.4.0'
 
-    compile 'com.github.andrewoma.dexx:kollection:0.7' // For Kotlin
 }
 repositories {
     mavenCentral()

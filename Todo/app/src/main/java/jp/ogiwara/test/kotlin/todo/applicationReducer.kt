@@ -9,7 +9,7 @@ val applicationReducer = Reducer <ApplicationState>{ state, action ->
         is ADD ->
             if (state.newTodoMessage.length > 0) {
                 state.copy(
-                        newTodoMessage = "",
+                        newTodoMessage = "",//これで空に
                         todos = state.todos.plus(Todo(action.message)))
             } else {
                 state

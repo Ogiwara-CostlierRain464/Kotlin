@@ -7,13 +7,14 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import com.brianegan.bansa.Store
+import com.brianegan.bansa.Subscription
 import trikita.anvil.Anvil
 import trikita.anvil.DSL.*
 import trikita.anvil.RenderableView
 import trikita.anvil.recyclerview.v7.RecyclerViewv7DSL.*
 
 class RootView(c: Context, val store: Store<ApplicationState>) : RenderableView(c) {
-    val stateChangeSubscription = store.subscribe { Anvil.render() }
+    //val stateChangeSubscription = store.subscribe { Anvil.render() }
     val mapCounterToCounterViewModel = buildMapCounterToCounterViewModel(store)
     val adapter = BansaRenderableRecyclerViewAdapter(
             mapCounterToCounterViewModel,
@@ -23,9 +24,19 @@ class RootView(c: Context, val store: Store<ApplicationState>) : RenderableView(
             }, true
     )
 
+    var subscription: Subscription? = null
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+
+        subscription = store.subscribe {
+            Anvil.render()
+        }
+    }
+
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        stateChangeSubscription.unsubscribe()
+        subscription?.unsubscribe()
     }
 
     override fun view() {
@@ -49,8 +60,8 @@ class RootView(c: Context, val store: Store<ApplicationState>) : RenderableView(
                         if (actionId == EditorInfo.IME_ACTION_SEARCH
                                 || actionId == EditorInfo.IME_ACTION_DONE
                                 || event?.action == KeyEvent.ACTION_DOWN
-                                && event?.keyCode == KeyEvent.KEYCODE_ENTER
-                                && store.state.newTodoMessage.length > 0
+                                && event.keyCode == KeyEvent.KEYCODE_ENTER
+                                && store.state.newTodoMessage.isNotEmpty()
                                 ) {
                             store.dispatch(ADD(store.state.newTodoMessage))
                             true
@@ -66,7 +77,7 @@ class RootView(c: Context, val store: Store<ApplicationState>) : RenderableView(
                     text("Add")
 
                     onClick {
-                        if (store.state.newTodoMessage.length > 0) {
+                        if (store.state.newTodoMessage.isNotEmpty()) {
                             store.dispatch(ADD(store.state.newTodoMessage))
                         }
                     }

@@ -32,7 +32,7 @@ fun buildMapCounterToCounterViewModel(store: Store<ApplicationState>): (Todo) ->
     return { todo ->
         TodoViewModel(
                 todo,
-                { store.dispatch(TOGGLE_TODO(todo.id, !todo.completed)) }
+                { store.dispatch(TOGGLE_TODO(todo.id, todo.completed.not())) }
         )
     }
 }
