@@ -1,3 +1,10 @@
+import io.reactivex.*
+import io.reactivex.schedulers.Schedulers
+import org.junit.Test
+import org.reactivestreams.Subscriber
+import org.reactivestreams.Subscription
+import java.util.concurrent.TimeUnit
+
 interface Hoge
 interface Fuga
 
@@ -10,7 +17,81 @@ class Bar<T> where T: Hoge, T: Fuga//やだわー
  * 不変、共変、反変
  *
  */
-fun main(args: Array<String>){
+
+enum class state{
+    ADD,MULTIPLY
+}
+
+@Test
+fun rx2(){
+
+    var calcMethod = state.ADD
+
+    val flowAble = Flowable.interval(300L,TimeUnit.MILLISECONDS)
+            .take(7)
+            .scan { sum,data ->
+                when(calcMethod){//参照等価なし
+                    state.ADD -> sum + data
+                    state.MULTIPLY -> sum * data
+                }
+            }
+
+    flowAble.subscribe(::println)
+
+    Thread.sleep(1000)
+    calcMethod = state.MULTIPLY
+    Thread.sleep(5000)
+
+}
+
+@Test
+fun rxSample(){
+
+    val flowable: Flowable<String> = Flowable.create(lamda@ {emmiter ->
+        val data = arrayOf("Hello","こんにちは")
+        data.forEach {
+            if(emmiter.isCancelled){
+                return@lamda
+            }
+
+            emmiter.onNext(it)
+        }
+
+        emmiter.onComplete()
+    },BackpressureStrategy.BUFFER)//超過したデータはバッファ
+
+    flowable
+            .observeOn(Schedulers.computation())//computational は計算の意味
+            .subscribe(object: Subscriber<String>{
+
+                var subscription: Subscription? = null
+
+                override fun onSubscribe(s: Subscription) {
+                    subscription = s
+                    subscription?.request(1L)
+                }
+
+                override fun onNext(t: String?) {
+                    val threadName = Thread.currentThread().name
+                    println("$threadName: $t")
+
+                    subscription?.request(1L)
+                }
+
+                override fun onComplete() {//ここでExceptionを発生させても、だれもcatchしません
+                    println("${Thread.currentThread().name}: 完了")
+                }
+
+                override fun onError(t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
+
+    Thread.sleep(500L)
+}
+
+@Test
+fun generics(){
 
     Bar<Piyo>()
     //Bar<Fuga>() Fuga !: Hoge,Fuga

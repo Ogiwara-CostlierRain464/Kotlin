@@ -23,14 +23,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.user = User("ogiwara",17)
+        binding.user = User("ogiwara", 17)
 
         binding.listRepos
 
         app.githubService!!.listRepos("language:kotlin")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Subscriber<Repositories>(){
+                .subscribe(object : Subscriber<Repositories>() {
                     override fun onNext(t: Repositories?) {
                         binding.listRepos.text = t.toString()
                     }
