@@ -22,6 +22,46 @@ enum class state{
     ADD,MULTIPLY
 }
 
+fun main(args: Array<String>){
+    // Counter.test()
+    flatMap()
+}
+
+fun interval(){
+    Flowable.interval(1000L,TimeUnit.MILLISECONDS)
+            .doOnNext {
+                println("emit: ${System.currentTimeMillis()}ミリ秒: $it")
+            }
+            .subscribe {
+                Thread.sleep(2000L)
+            }
+
+    Thread.sleep(10000L)
+}
+
+fun interval2(){
+    Flowable.interval(300L,TimeUnit.MILLISECONDS)
+            .onBackpressureDrop()
+            .observeOn(Schedulers.computation(),false,2)
+            .subscribe {
+                Thread.sleep(1000L)
+                println("${Thread.currentThread().name}: $it")
+            }
+    Thread.sleep(20000L)
+}
+
+fun flatMap(){
+    Flowable.just("A","B","C")
+            .concatMap {
+                Flowable.just(it).delay(1000L,TimeUnit.MILLISECONDS)
+            }
+            .subscribe {
+                println("${Thread.currentThread().name}: $it")
+            }
+
+    Thread.sleep(20000L)
+}
+
 @Test
 fun rx2(){
 
