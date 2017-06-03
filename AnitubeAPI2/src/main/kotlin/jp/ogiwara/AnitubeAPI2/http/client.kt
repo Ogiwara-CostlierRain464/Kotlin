@@ -4,7 +4,6 @@ import com.google.api.client.http.GenericUrl
 import com.google.api.client.http.javanet.NetHttpTransport
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import java.io.IOException
 
 fun getBody(url: String): Document{
     val httpTransport = NetHttpTransport()

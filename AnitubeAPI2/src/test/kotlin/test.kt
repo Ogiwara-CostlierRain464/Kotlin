@@ -3,11 +3,9 @@ import kotlinx.coroutines.experimental.*
 
 fun main(args: Array<String>) = runBlocking {
     val job = launch(CommonPool){
-        println(Anitube.search("kill me baby").await())
+        val videos = Anitube.search("kill me baby").await()
+        println("Found ${videos.size} Videos.")
+        println(videos.first().getMp4Url().await())
     }
     job.join()
-}
-
-suspend fun aha(){
-    println()
 }
