@@ -4,6 +4,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import io.realm.Realm
+import ogiwara.sample.rxandroid.model.User
 import rx.Observable
 import rx.android.events.OnClickEvent
 import rx.android.observables.ViewObservable
@@ -32,5 +34,8 @@ class MainActivity : AppCompatActivity() {
         merged.subscribe {
             counter.text = (counter.text.toString().toInt() + 1).toString()
         }
+
+        val obj2 = Realm.getDefaultInstance().where(User::class.java).equalTo("id",1).findAll()
+        toast(obj2.toString())
     }
 }

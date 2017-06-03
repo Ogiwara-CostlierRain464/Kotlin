@@ -15,5 +15,5 @@ fun <T: View> Activity.find(@IdRes id: Int): Lazy<T> = lazy {
 }
 
 fun Context.toast(text: String,length: Int = Toast.LENGTH_SHORT){
-    Toast.makeText(this,text,length)
+    Toast.makeText(this,text,length).show()
 }

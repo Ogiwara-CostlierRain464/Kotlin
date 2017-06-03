@@ -8,7 +8,16 @@ import jp.ogiwara.AnitubeAPI.model.Video
 const val ANITUBE_URL_TOP = "http://www.anitube.se/"
 const val ANITUBE_URL_SEARCH = "http://www.anitube.se/search/?search_id="
 
-class Anitube{
+object Anitube{
+
+    object URL{
+        const val TOP = "http://www.anitube.se/"
+        const val SEARCH = "http://www.anitube.se/search/?search_id="
+    }
+
+    val highLight: List<Video>
+        get() = GetTopVideosMethod(GetTopVideosMethod.FRAGMENT.HIGHLIGHT).execute()
+
 
     fun getHighlight(): ArrayList<Video>{
         return GetTopVideosMethod(GetTopVideosMethod.FRAGMENT.HIGHLIGHT).execute()

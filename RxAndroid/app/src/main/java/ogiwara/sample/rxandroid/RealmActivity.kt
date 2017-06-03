@@ -17,8 +17,5 @@ class RealmActivity : AppCompatActivity() {
             val obj: User = it.createObject(User::class.java,id)
             obj.name = "ogiwara"
         }
-
-        val obj2 = realm.where(User::class.java).equalTo("id",1).findFirst()
-        toast(obj2.name)
     }
 }

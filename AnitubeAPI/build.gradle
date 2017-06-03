@@ -6,6 +6,7 @@ buildscript {
 
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -27,4 +28,5 @@ dependencies {
     compile 'org.jsoup:jsoup:1.7.3'
     compile 'com.google.http-client:google-http-client:1.19.0'
     compile 'org.apache.commons:commons-lang3:3.0'
+    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.15'
 }

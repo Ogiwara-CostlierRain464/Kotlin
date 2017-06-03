@@ -1,13 +1,12 @@
 package jp.ogiwara.kotlin.experimental
 
-import android.databinding.DataBindingUtil
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import butterknife.bindView
 import butterknife.bindViews
-import jp.ogiwara.kotlin.experimental.databinding.ActivityMainBinding
-import jp.ogiwara.kotlin.experimental.viewmodel.User
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
@@ -21,18 +20,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.user = User("ogiwara", 17)
-
-        binding.listRepos
+        findViewById(R.id.goto_async).setOnClickListener {
+            startActivity(Intent(this,AsyncActivity::class.java))
+        }
 
         app.githubService!!.listRepos("language:kotlin")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Subscriber<Repositories>() {
                     override fun onNext(t: Repositories?) {
-                        binding.listRepos.text = t.toString()
+                        //binding.listRepos.text = t.toString()
                     }
 
                     override fun onError(e: Throwable?) {

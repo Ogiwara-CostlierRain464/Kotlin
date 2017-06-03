@@ -3,8 +3,19 @@ import jp.ogiwara.AnitubeAPI.model.Video
 
 
 fun main(args:Array<String>){
-    val client = Anitube()
-    for(e in client.search("Kill me baby")){
+    for(e in Anitube.search("Kill me baby")){
         println(e)
     }
 }
+
+//Rxとの互換性
+//Anitube.topVideo
+//Anitube.search
+fun asyncTest(){
+
+}
+
+suspend fun zundoko(){
+    val (z,d) = Pair("ズン","ドコ")
+}
+
