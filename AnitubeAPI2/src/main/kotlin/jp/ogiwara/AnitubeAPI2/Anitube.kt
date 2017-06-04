@@ -14,22 +14,41 @@ object Anitube{
         const val SEARCH = "http://www.anitube.se/search/?search_id="
     }
 
-    val highLight: Deferred<List<Video>>
+    val highLight: List<Video>
+        get() = GetTopVideosMethod(GetTopVideosMethod.HIGHLIGHT).execute()
+
+    val topRated: List<Video>
+        get() = GetTopVideosMethod(GetTopVideosMethod.TOP_RATED).execute()
+
+    val mostSeen: List<Video>
+        get() = GetTopVideosMethod(GetTopVideosMethod.MOST_SEEN).execute()
+
+    fun search(keyword: String): List<Video>{
+        return SearchMethod(keyword).execute()
+    }
+
+    //region async
+    /**
+     * Note: in Kotlin 1.x, coroutines are experimental features.
+     */
+
+    val highLightAsync: Deferred<List<Video>>
         get() = async(CommonPool){
             GetTopVideosMethod(GetTopVideosMethod.HIGHLIGHT).execute()
         }
 
-    val topRated: Deferred<List<Video>>
+    val topRatedAsync: Deferred<List<Video>>
         get() = async(CommonPool){
             GetTopVideosMethod(GetTopVideosMethod.TOP_RATED).execute()
         }
 
-    val mostSeen: Deferred<List<Video>>
+    val mostSeenAsync: Deferred<List<Video>>
         get() = async(CommonPool){
             GetTopVideosMethod(GetTopVideosMethod.MOST_SEEN).execute()
         }
 
-    fun search(keyword: String) = async(CommonPool){
-        return@async SearchMethod(keyword).execute()
+    fun searchAsync(keyword: String) = async(CommonPool){
+        SearchMethod(keyword).execute()
     }
+    //endregion
 }

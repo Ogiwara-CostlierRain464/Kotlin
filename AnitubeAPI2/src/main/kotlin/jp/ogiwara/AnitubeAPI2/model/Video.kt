@@ -5,6 +5,7 @@ import jp.ogiwara.AnitubeAPI2.trim
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.async
 import java.util.regex.Pattern
+import javax.print.attribute.standard.PrintQuality
 
 data class Video(val title: String,
                  val views: String,
@@ -22,7 +23,18 @@ data class Video(val title: String,
      * Note: in some videos, there are no HD video link
      * @param quality false = 360p true = 720p
      */
-    fun getMp4Url(quality: Boolean = false) = async(CommonPool){
+    fun getMp4Url(quality: Boolean = false): String{
+        var result = String()
+        val html = getBody(getKeyUrl()).outerHtml()
+        val p = Pattern.compile(if(quality) HD else SD)
+        val m = p.matcher(html.trim(from = "sources: [{",to = "}],")) //Dirty implementation...
+        while (m.find()){
+            result = m.group()
+        }
+        return result
+    }
+
+    fun getMp4UrlAsync(quality: Boolean = false) = async(CommonPool){
         var result = String()
         val html = getBody(getKeyUrl()).outerHtml()
         val p = Pattern.compile(if(quality) HD else SD)
