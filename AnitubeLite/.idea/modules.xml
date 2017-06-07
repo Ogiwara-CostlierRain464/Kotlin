@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AnitubeLite.iml" filepath="$PROJECT_DIR$/AnitubeLite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/anitubeapi/anitubeapi.iml" filepath="$PROJECT_DIR$/anitubeapi/anitubeapi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
