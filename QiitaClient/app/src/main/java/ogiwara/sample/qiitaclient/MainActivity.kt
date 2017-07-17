@@ -64,7 +64,7 @@ class MainActivity : RxAppCompatActivity() {
                         listAdapter.articles = it
                         listAdapter.notifyDataSetChanged()
                     },{
-                        Toast.makeText(this@MainActivity,"エラー: $it",Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity,"エラー: $it",Toast.LENGTH_SHORT).show()
                     })//SAM変換!!!
         }
     }

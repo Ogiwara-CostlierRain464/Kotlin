@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="coordinator" type="id" />
+    <item name="app_bar" type="id" />
+    <item name="toolbar" type="id" />
+    <item name="tab_layout" type="id" />
+    <item name="view_pager" type="id" />
+
+    <item name="video_image" type="id" />
+    <item name="vidoe_title" type="id" />
+    <item name="video_view_count" type="id" />
+</resources>
