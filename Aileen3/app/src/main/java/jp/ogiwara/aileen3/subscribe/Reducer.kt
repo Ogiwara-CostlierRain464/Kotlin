@@ -1,15 +1,14 @@
 package jp.ogiwara.aileen3.subscribe
 
-import com.brianegan.bansa.Reducer
+import jp.ogiwara.kotlin.cicle.Action
+import jp.ogiwara.kotlin.cicle.Reducer
 
-internal val reducer = Reducer<State> { state,action ->
-    when(action){
-        is LOAD -> {
-            state
+internal val reducer = object: Reducer<State>{
+    override fun reduce(state: State, action: Action){
+        when(action){
+            is TOUCH -> {
+                state.loading.set(true)
+            }
         }
-        is LOADED -> {
-            state
-        }
-        else -> state
     }
 }

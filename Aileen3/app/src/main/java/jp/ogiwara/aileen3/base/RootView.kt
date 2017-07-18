@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import jp.ogiwara.aileen3.R
+import jp.ogiwara.aileen3.playlist.PlaylistFragment
 import jp.ogiwara.aileen3.subscribe.SubscribeFragment
 import jp.ogiwara.aileen3.topchart.TopChartFragment
 import org.jetbrains.anko.find
@@ -106,6 +107,7 @@ class RootView(val activity: AppCompatActivity) : RenderableView(activity){
             return when(position){
                 0 -> TopChartFragment()
                 1 -> SubscribeFragment()
+                2 -> PlaylistFragment()
                 else -> TopChartFragment()
             }
             //TODO
