@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="video" type="jp.ogiwara.aileen3.other.model.Video" />
+    </data>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/video_image"
+            android:layout_centerVertical="true"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            app:srcCompat="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/video_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/video_image"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{video.title}"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/video_view_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/video_title"
+            android:layout_below="@id/video_title"
+            android:layout_marginTop="15dp"
+            android:text="@{video.viewCount}"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</layout>
