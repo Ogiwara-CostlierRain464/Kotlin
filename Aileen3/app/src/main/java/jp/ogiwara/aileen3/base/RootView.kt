@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar
 import jp.ogiwara.aileen3.R
 import jp.ogiwara.aileen3.playlist.PlaylistFragment
 import jp.ogiwara.aileen3.subscribe.SubscribeFragment
+import jp.ogiwara.aileen3.test1.Test1Fragment
 import jp.ogiwara.aileen3.topchart.TopChartFragment
 import org.jetbrains.anko.find
 import trikita.anvil.DSL.xml
@@ -108,6 +109,7 @@ class RootView(val activity: AppCompatActivity) : RenderableView(activity){
                 0 -> TopChartFragment()
                 1 -> SubscribeFragment()
                 2 -> PlaylistFragment()
+                3 -> Test1Fragment()
                 else -> TopChartFragment()
             }
             //TODO

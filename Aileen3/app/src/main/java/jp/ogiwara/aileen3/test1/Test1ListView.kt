@@ -1,4 +1,4 @@
-package jp.ogiwara.aileen3.subscribe
+package jp.ogiwara.aileen3.test1
 
 import android.content.Context
 import android.databinding.ObservableArrayList
@@ -7,16 +7,17 @@ import android.widget.ListView
 import jp.ogiwara.aileen3.other.model.Video
 
 
-class VideoListView(c: Context,attrs: AttributeSet): ListView(c,attrs){
+class Test1ListView(c: Context,attrs: AttributeSet): ListView(c,attrs){
 
-    var adapter: Test2VideoAdapter? = null
+    var adapter: Test1VideoAdapter? = null
 
     fun setList(videoList: ObservableArrayList<Video>){
         if(adapter == null){
-            adapter = Test2VideoAdapter(context,videoList)
+            adapter = Test1VideoAdapter(context,videoList)
             setAdapter(adapter)
         }
 
         adapter?.notifyDataSetChanged()
     }
+
 }

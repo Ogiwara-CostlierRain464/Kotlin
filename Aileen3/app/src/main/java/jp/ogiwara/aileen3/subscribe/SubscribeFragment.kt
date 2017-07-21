@@ -20,8 +20,6 @@ internal val store = BasicStore(state, reducer)
 //Try One-way-Data-Binding
 class SubscribeFragment: Fragment(),TestEventHandler{
 
-    val videoList = ObservableArrayList<Video>()
-
     //Write view at here?
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentSubscribeBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_subscribe,container,false)
@@ -47,6 +45,6 @@ class SubscribeFragment: Fragment(),TestEventHandler{
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-        //TODO Play
+        //You should not catch this at here!
     }
 }

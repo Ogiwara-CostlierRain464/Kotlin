@@ -42,7 +42,7 @@ class RootView(c: Context):  RenderableView(c){
 
         //Note XMLで再renderができない… Fieldにキャッシュ?
         /*xml(R.layout.fragment_common){
-            i("View",TopChartFragment::class)
+            i("View",TopChartFrment::class)
 
             val listView: ListView = if(listView == null){
                                         listView = (withId(R.id.list_view){} as ListView)

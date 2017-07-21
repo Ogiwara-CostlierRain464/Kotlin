@@ -13,10 +13,4 @@
 
         <item name="android:windowBackground">@android:color/white</item>
     </style>
-
-    <style name="VideoItem" parent="CardView">
-        <item name="cardElevation">5dp</item>
-        <item name="cardCornerRadius">5dp</item>
-        <item name="cardUseCompatPadding">true</item>
-    </style>
 </resources>

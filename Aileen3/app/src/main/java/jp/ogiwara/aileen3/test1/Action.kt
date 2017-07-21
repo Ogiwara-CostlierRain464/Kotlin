@@ -1,4 +1,4 @@
-package jp.ogiwara.aileen3.subscribe
+package jp.ogiwara.aileen3.test1
 
 import jp.ogiwara.aileen3.other.model.Video
 import jp.ogiwara.kotlin.cicle.Action

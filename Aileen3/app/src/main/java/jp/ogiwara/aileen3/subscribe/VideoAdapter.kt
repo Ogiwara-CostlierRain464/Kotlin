@@ -28,7 +28,7 @@ class VideoAdapter(c: Context,videoArrayList: ArrayList<Video>): ArrayAdapter<Vi
             binding = convertView.getTag() as ViewRowVideoListBinding
         }
 
-        binding?.video = getItem(position)
+        //binding?.video = getItem(position)
 
         return binding.root
     }

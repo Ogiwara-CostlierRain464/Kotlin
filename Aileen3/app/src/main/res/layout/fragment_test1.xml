@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="state" type="jp.ogiwara.aileen3.subscribe.State" />
-        <variable name="handlers" type="jp.ogiwara.aileen3.subscribe.TestEventHandler" />
+        <variable name="state" type="jp.ogiwara.aileen3.test1.State" />
     </data>
 
     <FrameLayout
@@ -18,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <jp.ogiwara.aileen3.subscribe.VideoListView
+
+            <jp.ogiwara.aileen3.test1.Test1ListView
+                android:id="@+id/test1_list_view"
                 android:fadeScrollbars="false"
                 app:list="@{state.videos}"
                 android:layout_width="match_parent"

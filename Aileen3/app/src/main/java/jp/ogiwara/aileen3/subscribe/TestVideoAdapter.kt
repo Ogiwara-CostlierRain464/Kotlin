@@ -3,6 +3,7 @@ package jp.ogiwara.aileen3.subscribe
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import jp.ogiwara.aileen3.other.model.Video
 
@@ -29,4 +30,12 @@ class TestVideoAdapter(private val context: Context): BaseAdapter() {
 
         return this
     }
+}
+
+class Test2VideoAdapter(c: Context,videoArrayList: ArrayList<Video>): ArrayAdapter<Video>(c,0,videoArrayList){
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?) =
+        ((convertView as? TestVideoView) ?: TestVideoView(context)).apply {
+            setVideo(getItem(position))
+        }
+
 }
