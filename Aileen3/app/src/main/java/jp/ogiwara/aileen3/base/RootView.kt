@@ -8,11 +8,14 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import jp.ogiwara.aileen3.R
+import jp.ogiwara.aileen3.eventbus.EventBusFragment
 import jp.ogiwara.aileen3.playlist.PlaylistFragment
 import jp.ogiwara.aileen3.subscribe.SubscribeFragment
 import jp.ogiwara.aileen3.test1.Test1Fragment
 import jp.ogiwara.aileen3.topchart.TopChartFragment
+import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.find
+import org.jetbrains.annotations.TestOnly
 import trikita.anvil.DSL.xml
 import trikita.anvil.RenderableView
 
@@ -36,6 +39,7 @@ class RootView(val activity: AppCompatActivity) : RenderableView(activity){
                 override fun onTabSelected(tab: TabLayout.Tab) {
                     //TODO TabTitleの変更
                     toolBar.title = tab.toString()
+                    eventBusTest()
                 }
                 override fun onTabReselected(tab: TabLayout.Tab?) = Unit
                 override fun onTabUnselected(tab: TabLayout.Tab?) = Unit
@@ -109,12 +113,17 @@ class RootView(val activity: AppCompatActivity) : RenderableView(activity){
                 0 -> TopChartFragment()
                 1 -> SubscribeFragment()
                 2 -> PlaylistFragment()
-                3 -> Test1Fragment()
+                3 -> EventBusFragment()
                 else -> TopChartFragment()
             }
             //TODO
         }
 
         override fun getCount() = 4
+    }
+
+    @TestOnly
+    private fun eventBusTest(){
+        EventBus.getDefault().postSticky(TestEvent(EventBusFragment::class.simpleName))
     }
 }

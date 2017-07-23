@@ -16,36 +16,86 @@ import jp.ogiwara.aileen3.other.model.Video
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.async
+import rx.Observable
 import java.io.IOException
 import java.lang.StringBuilder
 import java.util.*
+import java.util.concurrent.Future
+import java.util.concurrent.TimeUnit
 
 /**
  * TODO OAuth
  */
 class YouTubeClient {
 
+    companion object{
+        var token: String? = null
+    }
+
     val credential = HttpRequestInitializer {}
+
+    //Next Page Token - - - > Success!
+    val topChart: List<Video>
+        get(){
+
+            if(token == null){
+                val stringBuilder = StringBuilder()
+                try{
+                    val youtube = createYouTube()
+                    val req = youtube.videos().list("id")
+                    req.chart = "mostPopular"
+                    req.maxResults = MAX_ITEM
+                    req.fields = "items,nextPageToken"
+
+
+                    val res = req.execute()
+                    res.items.forEach {
+                        stringBuilder.append("${it.id},")
+                    }
+
+                    token = res.nextPageToken
+                }catch (e: IOException){
+                    e.printStackTrace()
+                }
+
+                return loadIds(stringBuilder.toString().cutEnd())
+            }else{
+                val stringBuilder = StringBuilder()
+                try{
+                    val youtube = createYouTube()
+                    val req = youtube.videos().list("id")
+                    req.chart = "mostPopular"
+                    req.maxResults = MAX_ITEM
+                    req.pageToken = token
+                    req.fields = "items,nextPageToken"
+
+                    val res = req.execute()
+                    res.items.forEach {
+                        stringBuilder.append("${it.id},")
+                    }
+
+                    token = res.nextPageToken
+                }catch (e: IOException){
+                    e.printStackTrace()
+                }
+
+                return loadIds(stringBuilder.toString().cutEnd())
+            }
+        }
 
     val topChartAsync: Deferred<List<Video>>
         get() = async(CommonPool){
-            val stringBuilder = StringBuilder()
-            try{
-                val youtube = createYouTube()
-                val req = youtube.videos().list("id")
-                req.chart = "mostPopular"
-                req.maxResults = MAX_ITEM
-                req.fields = "items"
-
-                req.execute().items.forEach {
-                    stringBuilder.append("${it.id},")
-                }
-            }catch (e: IOException){
-                e.printStackTrace()
-            }
-
-            return@async loadIds(stringBuilder.toString().cutEnd())
+            topChart
         }
+
+    val topChartObservable: Observable<Video>
+        get() =
+            Observable.unsafeCreate<Video>{ sub ->
+                topChart.forEach {
+                    sub.onNext(it)
+                }
+                sub.onCompleted()
+            }
 
 
     fun loadIds(ids: String): List<Video>{
