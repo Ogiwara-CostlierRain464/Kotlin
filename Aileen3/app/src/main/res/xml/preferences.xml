@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:title="@string/video_thumbnail_quality"
+        android:defaultValue="0"
+        android:entries="@array/video_thumbnail_qualities_title"
+        android:entryValues="@array/video_thumbnail_qualities_value"
+        />
+    <EditTextPreference
+        android:key="oauth_token"
+        android:title="OAuth Token"
+        />
+</PreferenceScreen>

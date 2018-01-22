@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import jp.ogiwara.aileen3.R
 import jp.ogiwara.aileen3.eventbus.EventBusFragment
+import jp.ogiwara.aileen3.oauth.OAuthTestFragment
 import jp.ogiwara.aileen3.playlist.PlaylistFragment
+import jp.ogiwara.aileen3.realm.RealmFragment
 import jp.ogiwara.aileen3.subscribe.SubscribeFragment
 import jp.ogiwara.aileen3.test1.Test1Fragment
 import jp.ogiwara.aileen3.topchart.TopChartFragment
@@ -113,7 +115,7 @@ class RootView(val activity: AppCompatActivity) : RenderableView(activity){
                 0 -> TopChartFragment()
                 1 -> SubscribeFragment()
                 2 -> PlaylistFragment()
-                3 -> EventBusFragment()
+                3 -> RealmFragment()
                 else -> TopChartFragment()
             }
             //TODO

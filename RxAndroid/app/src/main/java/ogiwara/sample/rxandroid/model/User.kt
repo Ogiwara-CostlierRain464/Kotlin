@@ -3,6 +3,7 @@ package ogiwara.sample.rxandroid.model
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
 
 open class User : RealmObject() {

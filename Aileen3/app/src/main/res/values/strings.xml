@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Aileen3</string>
     <string name="api_key">AIzaSyA0zT1Dv_qTLzyKXK2fYrbnlRDcIksRRfg</string>
+
+    <string name="video_thumbnail_quality">Video thumbnail quality</string>
+    <string-array name="video_thumbnail_qualities_title">
+        <item>Invisible</item>
+        <item>low</item>
+        <item>normal</item>
+    </string-array>
+
+    <string-array name="video_thumbnail_qualities_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>

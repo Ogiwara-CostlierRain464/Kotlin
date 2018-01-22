@@ -1,0 +1,52 @@
+group 'jp.ogiwara'
+version '1.0'
+
+buildscript {
+    ext.kotlin_version = '1.2.+'
+
+    repositories {
+        maven {
+            url 'http://dl.bintray.com/kotlin/kotlin-eap-1.2'
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin2js'
+
+repositories {
+    maven {
+        url 'http://dl.bintray.com/kotlin/kotlin-eap-1.2'
+    }
+    maven {
+        url "https://jcenter.bintray.com"
+    }
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    //compile "org.jetbrains.kotlinx:kotlinx.html.js:0.5.9"
+    //compile group: 'org.jetbrains.kotlinx', name: 'kotlinx.html.jvm', version: 'latest-1.0.4-eap-102-4'
+    testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
+}
+
+build.doLast() {
+    configurations.compile.each { File file ->
+        copy {
+            includeEmptyDirs = false
+
+            from zipTree(file.absolutePath)
+            into 'build/classes/main'
+            include '**/*.js'
+            eachFile { details ->
+                def names = details.path.split('/')
+                details.path = names.getAt(names.length - 1)
+            }
+        }
+    }
+}
