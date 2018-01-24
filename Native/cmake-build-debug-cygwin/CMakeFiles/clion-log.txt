@@ -1,1 +1,0 @@
-C:\Users\ogiwara\.CLion2017.3\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -D CMAKE_Kotlin_COMPILER=C:/Users/ogiwara/.konan/kotlin-native-windows-0.5/bin/konanc -D CMAKE_Kotlin_CINTEROP=C:/Users/ogiwara/.konan/kotlin-native-windows-0.5/bin/cinterop -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/ogiwara/Documents/GitHub/Kotlin/Native
