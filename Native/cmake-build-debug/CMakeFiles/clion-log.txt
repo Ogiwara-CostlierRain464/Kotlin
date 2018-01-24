@@ -1,0 +1,4 @@
+"C:\Program Files\JetBrains\CLion 2017.3\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -D CMAKE_Kotlin_COMPILER=C:/Users/ogiwara/.konan/kotlin-native-windows-0.5/bin/konanc -D CMAKE_Kotlin_CINTEROP=C:/Users/ogiwara/.konan/kotlin-native-windows-0.5/bin/cinterop -G "CodeBlocks - MinGW Makefiles" C:\Users\ogiwara\Documents\GitHub\Kotlin\Native
+CMake Error: CMake was unable to find a build program corresponding to "MinGW Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+CMake Error: CMake was unable to find a build program corresponding to "MinGW Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+-- Configuring incomplete, errors occurred!
