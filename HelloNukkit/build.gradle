@@ -1,0 +1,30 @@
+group 'jp.ogiwara'
+version '1.0'
+
+apply plugin: "kotlin"
+
+buildscript {
+    ext.kotlin_version = '1.2.21'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://ci.mengcraft.com:8080/plugin/repository/everything/'
+    }
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "cn.nukkit:nukkit:+"
+}

@@ -1,0 +1,6 @@
+main: jp.ogiwara.hello.HelloNukkit
+name: HelloNukkit
+version: "1.0"
+api: ["1.0.0"]
+description: NOPE
+auther: ogiwara

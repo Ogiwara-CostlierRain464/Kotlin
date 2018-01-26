@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HelloNukkit.iml" filepath="$PROJECT_DIR$/.idea/modules/HelloNukkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HelloNukkit_main.iml" filepath="$PROJECT_DIR$/.idea/modules/HelloNukkit_main.iml" group="HelloNukkit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HelloNukkit_test.iml" filepath="$PROJECT_DIR$/.idea/modules/HelloNukkit_test.iml" group="HelloNukkit" />
+    </modules>
+  </component>
+</project>
