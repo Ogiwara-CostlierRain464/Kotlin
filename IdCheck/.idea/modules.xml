@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdCheck.iml" filepath="$PROJECT_DIR$/.idea/modules/IdCheck.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdCheck_main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdCheck_main.iml" group="IdCheck" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdCheck_test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdCheck_test.iml" group="IdCheck" />
+    </modules>
+  </component>
+</project>

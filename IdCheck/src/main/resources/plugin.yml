@@ -1,0 +1,10 @@
+main: jp.ogiwara.nukkit.IdChecker
+name: IdChecker
+version: "1.0"
+api: ["1.0.0"]
+description: Check holding item's Id
+auther: ogiwara
+commands:
+  id:
+    description: Check holding item's Id
+    usage: /id
