@@ -31,8 +31,9 @@ dependencies {
     compile "cn.nukkit:nukkit:+"
 }
 
+/*
 shadowJar {
     manifest {
         attributes "Main-Class": "jp.ogiwara.nukkit.IdChecker"
     }
-}
+}*/
